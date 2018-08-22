@@ -16,10 +16,10 @@ class CreateCommentsRepliesTable extends Migration
         Schema::create('comments_replies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('text');
-            $table->integer('users_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->integer('comments_id')->unsigned()->nullable();
-            $table->foreign('comments_id')->references('id')->on('comments');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('comment_id')->unsigned()->nullable();
+            $table->foreign('comment_id')->references('id')->on('comments');
             $table->timestamps();
         });
     }
