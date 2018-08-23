@@ -13,8 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /*Factories Test*/
     	factory(Category::class, 48)->create();
     	factory(Post::class, 48)->create();
-        //$this->call(UsersTableSeeder::class);
+
+        $this->call(RolesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
     }
 }
