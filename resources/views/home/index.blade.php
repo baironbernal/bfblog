@@ -48,7 +48,7 @@
 			<div class="form-row">
 				 <div class="form-group col-md-12">
 			    	{!! Form::label('exampleFormControlTextarea1', 'Categoria'); !!}
-			    	{!! Form::select('size', $categories, 'S',
+			    	{!! Form::select('category_id', $categories, 'S',
 			    	 	$attributes = [
 				    	 	'class' => 'form-control',
 				    	 	
