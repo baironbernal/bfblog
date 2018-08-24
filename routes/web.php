@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware' => ['role:admin'] , 'prefix' => 'admin'], function () {
+	
+    Route::get('posts/delete/{id}', 'PostController@destroy');
+    Route::resource('posts', 'PostController');
+     
+});
