@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 use App\Post;
+use App\Category;
+
 
 class PostController extends Controller
 {
@@ -14,7 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -24,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::pluck('name','id')->all();
+        return view('admin.post.create', compact('categories'));
     }
 
     /**
@@ -35,14 +41,36 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->title = $request->title;
-        $post->author = $request->author;
-        $post->file = $request->file;
-        $post->description = $request->description;
-        $post->category_id = $request->category_id;
-        $post->save();
+        $validator = Validator::make($request->all(), [
+            'title' => 'required | max:50',
+            'author' => 'required | max:50',
+            'file' => 'required | mimes:jpeg,jpg,png',
+            'description' => 'required | max:1001',
+            'category_id' => 'required',
+        ]);
 
+
+
+          if ($validator->fails()) {
+            return Redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+            }
+            else
+            {
+                $file = $request->file('file');
+                $post = new Post();
+                $post->title = $request->title;
+                $post->author = $request->author;
+                $post->file = $file->getClientOriginalName();
+                $post->description = $request->description;
+                $post->category_id = $request->category_id;
+                $post->save();
+
+                $path = $file->storeAs('posts' , $file->getClientOriginalName());
+
+                return back()->with('status', '¡Articulo guardado!');
+            }
     }
 
     /**

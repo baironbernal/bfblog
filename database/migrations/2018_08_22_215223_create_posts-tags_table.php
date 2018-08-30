@@ -22,6 +22,7 @@ class CreatePostsTagsTable extends Migration
 
         });
     }
+    
 
     /**
      * Reverse the migrations.

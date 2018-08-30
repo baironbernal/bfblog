@@ -5,6 +5,7 @@ use App\User;
 
 
 
+
 class UsersTableSeeder extends Seeder
 {
     /**

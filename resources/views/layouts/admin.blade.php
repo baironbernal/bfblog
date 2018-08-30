@@ -60,7 +60,7 @@
             <div class="form-new">
                <div class="container">
                   <div class="row justify-content-md-center">
-                     @yield('form')
+                     @yield('content')
                   </div>
                </div>
             </div>

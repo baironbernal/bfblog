@@ -18,9 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('author');
             $table->string('file')->nullable();
-            $table->string('description');
+            $table->string('description', 10000);
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $categories = Category::pluck('name','id')->all();
-        return view('home.index', compact('categories'));
+        
     }
 }

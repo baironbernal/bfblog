@@ -12,17 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['middleware' => ['role:admin'] , 'prefix' => 'admin'], function () {
-	
+Route::group(['middleware' => ['role:admin', 'auth'] , 'prefix' => 'admin'], function () {
+	Route::get('/create', 'PostController@create')->name('posts.create');
     Route::get('posts/delete/{id}', 'PostController@destroy');
     Route::resource('posts', 'PostController');
-     
 });
