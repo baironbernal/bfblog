@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
           'email' => 'baironbernal@hotmail.com',
           'password' => bcrypt('PASSWORD'),
         ]);
+        
         $user->assignRole('admin');
     }
 }

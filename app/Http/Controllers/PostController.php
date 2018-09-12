@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
-use App\Post;
-use App\Category;
+use App\Models\Post;
+use App\Models\Category;
 
 
 class PostController extends Controller
@@ -41,15 +41,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required | max:50',
-            'author' => 'required | max:50',
-            'file' => 'required | mimes:jpeg,jpg,png',
-            'description' => 'required | max:1001',
-            'category_id' => 'required',
-        ]);
-
-
+            $validator = Validator::make($request->all(), [
+                'title' => 'required | max:50',
+                'author' => 'required | max:50',
+                'file' => 'required | mimes:jpeg,jpg,png',
+                'description' => 'required | max:1001',
+                'category_id' => 'required',
+            ]);
 
           if ($validator->fails()) {
             return Redirect::back()

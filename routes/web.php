@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'VisitorsController@index')->name('index');
+Route::get('/{category}', 'VisitorsController@category')->name('category');
+Route::get('/show/{id}', 'VisitorsController@show')->name('show.category');
 
 Auth::routes();
 
@@ -24,3 +24,7 @@ Route::group(['middleware' => ['role:admin', 'auth'] , 'prefix' => 'admin'], fun
     Route::get('posts/delete/{id}', 'PostController@destroy');
     Route::resource('posts', 'PostController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

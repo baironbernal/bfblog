@@ -45,6 +45,7 @@
 			    	{!! Form::file('file', 
 			    		$attributes = [
 				    	 	'class' => 'form-control',
+							'accept' => 'img/*',
 			    	 	]); 
 			    	 !!}
 			    </div>
