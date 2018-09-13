@@ -43,9 +43,9 @@ class PostController extends Controller
     {
             $validator = Validator::make($request->all(), [
                 'title' => 'required | max:50',
-                'author' => 'required | max:50',
-                'file' => 'required | mimes:jpeg,jpg,png',
-                'description' => 'required | max:1001',
+                'author' => 'required | max:350',
+                'file' => 'required | mimes:jpeg,jpg,png,gif',
+                'description' => 'required | max:10000',
                 'category_id' => 'required',
             ]);
 

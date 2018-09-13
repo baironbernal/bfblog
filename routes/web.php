@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', 'VisitorsController@index')->name('index');
-Route::get('/{category}', 'VisitorsController@category')->name('category');
-Route::get('/show/{id}', 'VisitorsController@show')->name('show.category');
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'VisitorsController@index')->name('index');
+Route::get('/{category}', 'VisitorsController@category')->name('category');
+Route::get('/show/{id}', 'VisitorsController@show')->name('show.category');
 
 
 Route::group(['middleware' => ['role:admin', 'auth'] , 'prefix' => 'admin'], function () {
@@ -25,6 +27,5 @@ Route::group(['middleware' => ['role:admin', 'auth'] , 'prefix' => 'admin'], fun
     Route::resource('posts', 'PostController');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
