@@ -11,12 +11,14 @@
       <title>{{ config('app.name', 'Admin') }}</title>
       <!-- Scripts -->
       <script src="{{ asset('js/app.js') }}" defer></script>
+      <script src="{{ asset('js/admin.js') }}" defer></script>
       <!-- Fonts -->
       <link rel="dns-prefetch" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
       <!-- Styles -->
       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
    </head>
+
    <body>
       <div id="app">
          @guest
@@ -24,7 +26,7 @@
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
          </li>
          @else
-         <div class="container">
+         <div class="container-fluid">
             <div class="row justify-content-md-center">
                <div class="col col-lg-8">
                   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -41,31 +43,27 @@
                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
                </form>
-            </div>
-         </div>
-         </div>
-         
-         @endguest
-        
-            <div class="menu" style="margin-top: 80px;">
-               <div class="container">
-                  <div class="row justify-content-md-center">
+            </div><br><br><br>
+
+
+            <div class="row justify-content-md-center">
+                  <div class="col-8">
                      @include('admin.partials.nav-menu')
                   </div>
+            </div>
+            <br><br>
+            <div class="row justify-content-md-center">
+               <div class="col-8">
+                  @yield('content')
                </div>
             </div>
-            <div class="form-new">
-               <div class="container">
-                  <div class="row justify-content-md-center">
-                     @yield('content')
-                  </div>
-               </div>
-            </div>
-              
-               
-                  
-             
+
+         </div>
+
+       
+   
          
+         @endguest
       
    </body>
 </html>

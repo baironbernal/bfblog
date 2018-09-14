@@ -10,7 +10,8 @@ class VisitorsController extends Controller
 {
     public function index()
     {
-    	$posts = Post::orderBy('created_at', 'DESC')
+    	$posts = Post::where('status' , 1)
+            ->orderBy('created_at', 'DESC')
     		->simplePaginate(15);
 
     	return view('home.index', compact('posts'));
@@ -18,7 +19,10 @@ class VisitorsController extends Controller
 
     public function category($category)
     {
-    	$posts = Post::where('category_id' , $category)
+    	$posts = Post::where([
+                ['category_id', $category],
+                ['status', 1],
+            ])
     		->simplePaginate(15);
     	
     	return view('home.category', compact('posts'));

@@ -33,6 +33,18 @@ class PostController extends Controller
         return view('admin.post.create', compact('categories'));
     }
 
+
+    public function publish($id)
+    {
+        $post = Post::find($id);
+        $post->status = 1;
+        $post->save();
+
+        return response()->json(['post', $post]);
+
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -113,6 +125,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return response()->json(['post', $post]);
+        
     }
 }

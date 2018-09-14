@@ -24,6 +24,7 @@ Route::get('/show/{id}', 'VisitorsController@show')->name('show.category');
 Route::group(['middleware' => ['role:admin', 'auth'] , 'prefix' => 'admin'], function () {
 	Route::get('/create', 'PostController@create')->name('posts.create');
     Route::get('posts/delete/{id}', 'PostController@destroy');
+    Route::get('publish/{id}', 'PostController@publish');
     Route::resource('posts', 'PostController');
 });
 

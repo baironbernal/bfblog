@@ -8,17 +8,19 @@
 	                {{ session('status') }}
 	            </div>
 	        @endif
+
+	        @if ($errors->any())
+			    <div class="alert alert-danger">
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+			@endif
 			<div class="form-row">
 				 <div class="form-group col-md-6">
-				 	@if ($errors->any())
-					    <div class="alert alert-danger">
-					        <ul>
-					            @foreach ($errors->all() as $error)
-					                <li>{{ $error }}</li>
-					            @endforeach
-					        </ul>
-					    </div>
-					@endif
+				 	
 			    	{!! Form::label('inputEmail4', 'Titulo'); !!}
 			    	{!! Form::text('title','', 
 			    		$attributes = [
