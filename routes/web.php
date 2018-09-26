@@ -28,5 +28,9 @@ Route::group(['middleware' => ['role:admin', 'auth'] , 'prefix' => 'admin'], fun
     Route::resource('posts', 'PostController');
 });
 
+Route::group(['middleware' => ['role:subscriber', 'auth'] , 'prefix' => 'subscriber'], function () {
+    Route::resource('comments', 'CommentsController');
+});
+
 
 

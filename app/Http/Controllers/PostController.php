@@ -11,6 +11,8 @@ use App\Models\Category;
 
 class PostController extends Controller
 {
+   
+
     /**
      * Display a listing of the resource.
      *

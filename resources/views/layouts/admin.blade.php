@@ -21,6 +21,8 @@
 
    <body>
       <div id="app">
+
+         <example-component></example-component>
          @guest
          <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

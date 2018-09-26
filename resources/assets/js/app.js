@@ -16,7 +16,21 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('form-comment-component', require('./components/FormCommentComponent.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#test',
+
+    
+    data: {
+    	comments : []
+    },
+
+    methods: {
+    	setComments: function() {
+    		var post_id = $("#post_id").val();
+    		var url = 'subscriber/comments/' +  id
+    	
+    	}
+    }
 });

@@ -7,15 +7,16 @@
 		<div class="col-4">
 			<img class="img-responsive" src="{{url('storage/posts/'.$post->file)}}" alt="Card image cap" style="width: 300px;">
 		</div>
-		<div class="col-8">
+		<div id="test" class="col-8">
 			<blockquote class="blockquote">
 			  <p class="mb-0"><h1>{{ $post->title }}</h1></p>
+			  <input type="hidden" name="" id="post_id" value="{{ $post->id }}">
 			  <footer class="blockquote-footer"><cite title="Source Title">{{ $post->author }}</cite></footer>
 			</blockquote>
 			
 			<p>{{ $post->description }}</p>
 			<p>
-				<span class="badge badge-primary">Primary</span>
+				<span class="badge badge-primary" v-on:click="setComments()">Establecer comentarios</span>
 				<span class="badge badge-secondary">Secondary</span>
 				<span class="badge badge-success">Success</span>
 				<span class="badge badge-danger">Danger</span>
