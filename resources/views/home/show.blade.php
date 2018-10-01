@@ -34,36 +34,13 @@
 		</div>
 		<div class="col-md-8">
 			@guest
-			  <div class="alert alert-secondary" role="alert">
-				  Usted debe estar registrado para poder comentar.
-				</div>
+			  
+				<div id="comments_article">
+					<comments-article article:{{$post->id}}></comments-article>
+			</div>
 			@else
-			  	@foreach ($comments as $commentary)
-			  	<div class="media">
-				  <img class="mr-3" src="{{asset('images/user.png')}}" alt="user" width="64px" height="64px">
-				  <div class="media-body">
-				    <h5 class="mt-0 font-italic">{{$commentary->user->name}}</h5>
-				    
-				    {{$commentary->text}}	
-
-				    @foreach ($commentary->replies as $reply)
-
-					   	<div class="media mt-3">
-					      <a class="pr-3" href="#">
-					        <img src="{{asset('images/user-comment.png')}}" alt="comment" width="34px" height="34px">
-					      </a>
-					      <div class="media-body">
-					        <h5 class="mt-0">Holaaa</h5>
-					        {{$reply->text}}
-					      </div>
-					    </div>
-				    @endforeach
-
-				    	
-				  </div>
-				</div>
-				<hr>
-			  	@endforeach
+			
+			<div>No, debes loguearte</div>			  	
 
 			@endauth 
 

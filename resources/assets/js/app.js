@@ -15,22 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('form-comment-component', require('./components/FormCommentComponent.vue'));
+import Comments from './components/Comments.vue';
 
-const app = new Vue({
-    el: '#test',
 
-    
-    data: {
-    	comments : []
-    },
-
-    methods: {
-    	setComments: function() {
-    		var post_id = $("#post_id").val();
-    		var url = 'subscriber/comments/' +  id
-    	
-    	}
-    }
+Vue.component('comments-article', Comments);
+new Vue({
+  el: '#comments_article'
 });
