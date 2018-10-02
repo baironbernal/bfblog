@@ -22,5 +22,14 @@ class UsersTableSeeder extends Seeder
         ]);
         
         $user->assignRole('admin');
+
+
+        $susbcriber = User::create([
+          'name' => 'susbcriber',
+          'email' => 'susbcriber@hotmail.com',
+          'password' => bcrypt('PASSWORD'),
+        ]);
+        
+        $susbcriber->assignRole('subscriber');
     }
 }

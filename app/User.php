@@ -34,4 +34,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Comment');
     }
+
+    public function replies()
+    {
+        return $this->hasMany('App\Models\Reply');
+    }
 }

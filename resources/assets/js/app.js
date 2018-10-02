@@ -16,9 +16,18 @@ window.Vue = require('vue');
  */
 
 import Comments from './components/Comments.vue';
+import Input from './components/InputComment'
 
 
 Vue.component('comments-article', Comments);
 new Vue({
   el: '#comments_article'
+
+});
+
+
+Vue.component('input-comment', Input);
+new Vue({
+  el: '#input_comment'
+
 });

@@ -13,4 +13,8 @@ class Reply extends Model
     {
         return $this->belongsTo('App\Models\Commentary');
     }
+    public function user()
+    {
+    	return $this->belongsTo('App\User');
+    }
 }

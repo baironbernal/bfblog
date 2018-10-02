@@ -16,7 +16,7 @@
 			
 			<p>{{ $post->description }}</p>
 			<p>
-				<span class="badge badge-primary" v-on:click="setComments()">Establecer comentarios</span>
+				<span class="badge badge-primary">Establecer comentarios</span>
 				<span class="badge badge-secondary">Secondary</span>
 				<span class="badge badge-success">Success</span>
 				<span class="badge badge-danger">Danger</span>
@@ -34,14 +34,11 @@
 		</div>
 		<div class="col-md-8">
 			@guest
-			  
-				<div id="comments_article">
-					<comments-article article:{{$post->id}}></comments-article>
-			</div>
+				<div>No, debes loguearte</div>	
 			@else
-			
-			<div>No, debes loguearte</div>			  	
-
+			<div id="comments_article">
+				<comments-article :article="{{ json_encode($post->id) }}"></comments-article>
+			</div>		  	
 			@endauth 
 
 		</div>
