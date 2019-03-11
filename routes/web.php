@@ -26,6 +26,8 @@ Route::group(['middleware' => ['role:admin', 'auth'] , 'prefix' => 'admin'], fun
     Route::get('posts/delete/{id}', 'PostController@destroy');
     Route::get('publish/{id}', 'PostController@publish');
     Route::resource('posts', 'PostController');
+    Route::get('insert/tags/{tag}', 'TagController@storeWithGet');
+    Route::resource('tags', 'TagController');
 });
 
 Route::group(['middleware' => ['role:subscriber', 'auth'] , 'prefix' => 'subscriber'], function () {

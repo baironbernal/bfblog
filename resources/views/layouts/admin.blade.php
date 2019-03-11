@@ -9,20 +9,19 @@
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>{{ config('app.name', 'Admin') }}</title>
-      <!-- Scripts -->
-      <script src="{{ asset('js/app.js') }}" defer></script>
-      <script src="{{ asset('js/admin.js') }}" defer></script>
+         
       <!-- Fonts -->
       <link rel="dns-prefetch" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
       <!-- Styles -->
       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+      @yield('styles')
+      
    </head>
 
    <body>
       <div id="app">
-
-         <example-component></example-component>
          @guest
          <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -60,13 +59,14 @@
                </div>
             </div>
 
-         </div>
 
-       
-   
-         
+         </div>
          @endguest
-      
+         <!-- Scripts -->
+         <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
+         <script type="text/javascript" src="{{ asset('js/toastr.js') }}" defer></script>
+       @yield('scripts')
+
    </body>
 </html>
 

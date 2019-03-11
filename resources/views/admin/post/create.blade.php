@@ -70,11 +70,19 @@
 			    	{!! Form::select('category_id', $categories, 'S',
 			    	 	$attributes = [
 				    	 	'class' => 'form-control',
-				    	 	
 			    	 	]);!!}
 			    	 	 
 			    </div>
 			</div>
+			
+			 <div id="container-tags">
+				 <tags>
+				 </tags>
+			</div>
+				
+
+			
+			
 			{!! Form::submit('Enviar', ['class' => 'btn btn-primary']) !!}
 			
 

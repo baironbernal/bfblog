@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Redirect;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class PostController extends Controller
@@ -55,6 +57,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+ dd($request);
             $validator = Validator::make($request->all(), [
                 'title' => 'required | max:50',
                 'author' => 'required | max:350',
@@ -70,6 +73,7 @@ class PostController extends Controller
             }
             else
             {
+
                 $file = $request->file('file');
                 $post = new Post();
                 $post->title = $request->title;

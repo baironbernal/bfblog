@@ -6,7 +6,7 @@
  */
 
 require('./bootstrap');
-
+const url = window.location.pathname;
 window.Vue = require('vue');
 
 /**
@@ -15,19 +15,18 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Comments from './components/Comments.vue';
-import Input from './components/InputComment'
+import vSelect from 'vue-select';
+Vue.component('v-select', vSelect);
+Vue.component('tags', require('./components/TagsComponent.vue'));
+
+    if (url === '/admin/create') {
+
+		new Vue({
+		  el: '#container-tags',
+		});
+	}
 
 
-Vue.component('comments-article', Comments);
-new Vue({
-  el: '#comments_article'
-
-});
 
 
-Vue.component('input-comment', Input);
-new Vue({
-  el: '#input_comment'
 
-});
