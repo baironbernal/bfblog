@@ -1,3 +1,7 @@
+@php 
+	$colors = (new \App\Helpers\GlobalApp)->getColorsTags();
+@endphp
+
 @extends('layouts.app')
 @section('content')
 	
@@ -9,21 +13,18 @@
 		</div>
 		<div id="test" class="col-8">
 			<blockquote class="blockquote">
-			  <p class="mb-0"><h1>{{ $post->title }}</h1></p>
+			  <p class="mb-0">
+				  <h1>{{ $post->title }}</h1>
+			  </p>
 			  <input type="hidden" name="" id="post_id" value="{{ $post->id }}">
 			  <footer class="blockquote-footer"><cite title="Source Title">{{ $post->author }}</cite></footer>
 			</blockquote>
 			
 			<p>{{ $post->description }}</p>
 			<p>
-				<span class="badge badge-primary">Establecer comentarios</span>
-				<span class="badge badge-secondary">Secondary</span>
-				<span class="badge badge-success">Success</span>
-				<span class="badge badge-danger">Danger</span>
-				<span class="badge badge-warning">Warning</span>
-				<span class="badge badge-info">Info</span>
-				<span class="badge badge-light">Light</span>
-				<span class="badge badge-dark">Dark</span>
+				@foreach($post->tags as $tag)
+					<a href="{{url('show-posts/' .$tag->id)}}" class="{{$colors[array_rand($colors)]}}">{{$tag->name}}</a>
+				@endforeach
 			</p>
 		</div>
 	</div>

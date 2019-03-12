@@ -45,8 +45,6 @@ class PostController extends Controller
         $post->save();
 
         return response()->json(['post', $post]);
-
-        
     }
 
     /**
@@ -57,13 +55,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
- dd($request);
+ 
             $validator = Validator::make($request->all(), [
                 'title' => 'required | max:50',
                 'author' => 'required | max:350',
                 'file' => 'required | mimes:jpeg,jpg,png,gif',
                 'description' => 'required | max:10000',
                 'category_id' => 'required',
+                'taghide' => 'required'
             ]);
 
           if ($validator->fails()) {
@@ -73,7 +72,6 @@ class PostController extends Controller
             }
             else
             {
-
                 $file = $request->file('file');
                 $post = new Post();
                 $post->title = $request->title;
@@ -83,6 +81,10 @@ class PostController extends Controller
                 $post->category_id = $request->category_id;
                 $post->save();
 
+                $idTags = explode(',', $request->taghide);
+                foreach ($idTags as $tag) {
+                    $post->tags()->attach($tag);
+                }
                 $path = $file->storeAs('posts' , $file->getClientOriginalName());
 
                 return back()->with('status', '¡Articulo guardado!');
@@ -131,10 +133,15 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        //
+    }
+    public function destroyPost($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->tags()->detach();
         $post->delete();
 
-        return response()->json(['post', $post]);
-        
+        return response()->json(['status', 200]);
+
     }
 }

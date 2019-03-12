@@ -27,7 +27,7 @@
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
          </li>
          @else
-         <div class="container-fluid">
+         <div class="container">
             <div class="row justify-content-md-center">
                <div class="col col-lg-8">
                   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -44,9 +44,8 @@
                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
                </form>
-            </div><br><br><br>
-
-
+            </div>
+            <br><br><br>
             <div class="row justify-content-md-center">
                   <div class="col-8">
                      @include('admin.partials.nav-menu')
@@ -54,7 +53,7 @@
             </div>
             <br><br>
             <div class="row justify-content-md-center">
-               <div class="col-8">
+               <div class="col col-lg-8">
                   @yield('content')
                </div>
             </div>

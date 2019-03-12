@@ -23,6 +23,14 @@ class TagController extends Controller
         return response()->json(['tags' => $allTags]);
     }
 
+    public function indexPage($id) 
+    {
+        $tag = Tag::findOrFail($id);
+        $posts = $tag->posts;
+       
+        return view('home.tags-posts',compact('tag','posts'));        
+    }
+
     /**
      * Show the form for creating a new resource.
      *

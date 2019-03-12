@@ -1,21 +1,18 @@
 <template>
     <div class="form-row">
         <div class="form-group col-md-6">
+            <input name="taghide" type="hidden" v-model="modifySelected"/>
             <v-select multiple 
                 :value.sync="selected"  
                 :options="selectOptions"
                 v-model="selected" >
             </v-select>
-
-            <input name="taghide" type="hidden" v-model="clearSelected"/>
-
         </div>
         <div class="form-group col-md-6">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tagCreate">
               Crear etiqueta
             </button>
-
             <!-- Modal -->
             <div class="modal fade" id="tagCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -37,7 +34,6 @@
               </div>
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -78,5 +74,4 @@
             
         }
     }
-
 </script>

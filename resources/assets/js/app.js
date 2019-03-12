@@ -18,11 +18,16 @@ window.Vue = require('vue');
 import vSelect from 'vue-select';
 Vue.component('v-select', vSelect);
 Vue.component('tags', require('./components/TagsComponent.vue'));
+Vue.component('publish', require('./components/PublishPostComponent.vue'));
 
     if (url === '/admin/create') {
-
 		new Vue({
 		  el: '#container-tags',
+		});
+	}
+	else if (url === '/admin/posts') {
+		new Vue({
+		  el: '#container-publish',
 		});
 	}
 
